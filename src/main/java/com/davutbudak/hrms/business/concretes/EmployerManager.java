@@ -6,11 +6,13 @@ import com.davutbudak.hrms.core.utilities.results.*;
 import com.davutbudak.hrms.dataAccess.abstracts.EmployerDao;
 import com.davutbudak.hrms.entities.concretes.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@Service
 public class EmployerManager implements EmployerService {
     private EmployerDao employerDao;
 

@@ -30,13 +30,4 @@ public class JobPositionsController {
         return this.jobPositionService.add(jobPosition);
     }
 
-    @PostMapping("/update")
-    public Result update(@RequestBody JobPosition jobPosition){
-        return this.jobPositionService.update(jobPosition);
-    }
-
-    @PostMapping("/delete")
-    public Result delete(@RequestBody JobPosition jobPosition){
-        return this.jobPositionService.delete(jobPosition);
-    }
 }

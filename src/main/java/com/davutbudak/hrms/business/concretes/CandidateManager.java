@@ -6,9 +6,11 @@ import com.davutbudak.hrms.core.utilities.results.*;
 import com.davutbudak.hrms.dataAccess.abstracts.CandidateDao;
 import com.davutbudak.hrms.entities.concretes.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CandidateManager implements CandidateService {
     private CandidateDao candidateDao;
 

@@ -6,14 +6,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "personnel")
+@Table(name = "staffs")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Personnel extends User{
+@PrimaryKeyJoinColumn(name = "user_id")
+public class Staff extends User{
 
     @Column(name = "name")
     private String name;

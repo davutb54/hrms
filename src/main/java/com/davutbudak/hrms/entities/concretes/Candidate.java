@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Data
@@ -13,6 +14,7 @@ import javax.persistence.Table;
 @Table(name = "candidates")
 @AllArgsConstructor
 @NoArgsConstructor
+@PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
 
     @Column(name = "name")
@@ -21,9 +23,9 @@ public class Candidate extends User {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "identityNumber")
+    @Column(name = "identity_Number")
     private String identityNumber;
 
-    @Column(name = "yearOfBirth")
+    @Column(name = "year_of_birth")
     private int yearOfBirth;
 }

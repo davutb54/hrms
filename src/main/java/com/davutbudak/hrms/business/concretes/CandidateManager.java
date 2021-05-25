@@ -2,9 +2,7 @@ package com.davutbudak.hrms.business.concretes;
 
 import com.davutbudak.hrms.business.abstracts.CandidateService;
 import com.davutbudak.hrms.business.constants.Messages;
-import com.davutbudak.hrms.core.utilities.results.DataResult;
-import com.davutbudak.hrms.core.utilities.results.Result;
-import com.davutbudak.hrms.core.utilities.results.SuccessDataResult;
+import com.davutbudak.hrms.core.utilities.results.*;
 import com.davutbudak.hrms.dataAccess.abstracts.CandidateDao;
 import com.davutbudak.hrms.entities.concretes.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +24,24 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public Result add(Candidate candidate) {
-        return null;
-    }
+        if (candidate.getName().isEmpty())
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (candidate.getSurname().isEmpty())
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (candidate.getEmail().isEmpty())
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (candidate.getPassword().isEmpty())
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (candidate.getIdentityNumber().isEmpty())
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (candidate.getYearOfBirth()==0)
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (this.candidateDao.existsByEmail(candidate.getEmail()))
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+        if (this.candidateDao.existsByIdentityNumber(candidate.getIdentityNumber()))
+            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
 
-    @Override
-    public Result update(Candidate candidate) {
-        return null;
-    }
-
-    @Override
-    public Result delete(Candidate candidate) {
-        return null;
+        this.candidateDao.save(candidate);
+        return new SuccessResult(Messages.CANDIDATE_ADDED);
     }
 }

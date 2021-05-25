@@ -26,26 +26,11 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public Result add(JobPosition jobPosition) {
-        if (this.jobPositionDao.existsById(jobPosition.getId()))
+        if (this.jobPositionDao.existsByName(jobPosition.getName()))
             return new ErrorResult(Messages.JOB_POSITION_ADD_ERROR);
 
         this.jobPositionDao.save(jobPosition);
         return new SuccessResult(Messages.JOB_POSITION_ADDED);
-    }
-
-    @Override
-    public Result update(JobPosition jobPosition) {
-        JobPosition jobPositionInDB = this.jobPositionDao.getById(jobPosition.getId());
-        jobPositionInDB.setName(jobPosition.getName());
-        this.jobPositionDao.save(jobPositionInDB);
-
-        return new SuccessResult(Messages.JOB_POSITION_UPDATED);
-    }
-
-    @Override
-    public Result delete(JobPosition jobPosition) {
-        this.jobPositionDao.delete(jobPosition);
-        return new SuccessResult(Messages.JOB_POSITION_DELETED);
     }
 
 }

@@ -21,16 +21,16 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public DataResult<List<JobPosition>> getAll() {
-        return new SuccessDataResult<>(this.jobPositionDao.findAll(), Messages.JOB_POSITION_DATA_LISTED);
+        return new SuccessDataResult<>(this.jobPositionDao.findAll(), Messages.JOB_POSITION_SUCCESS_DATA_LISTED);
     }
 
     @Override
     public Result add(JobPosition jobPosition) {
         if (this.jobPositionDao.existsByName(jobPosition.getName()))
-            return new ErrorResult(Messages.JOB_POSITION_ADD_ERROR);
+            return new ErrorResult(Messages.JOB_POSITION_ERROR_ALREADY_EXISTS);
 
         this.jobPositionDao.save(jobPosition);
-        return new SuccessResult(Messages.JOB_POSITION_ADDED);
+        return new SuccessResult(Messages.JOB_POSITION_SUCCESS_ADDED);
     }
 
 }

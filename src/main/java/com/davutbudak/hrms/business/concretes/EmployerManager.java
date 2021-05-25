@@ -23,7 +23,7 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public DataResult<List<Employer>> getAll() {
-        return new SuccessDataResult<>(this.employerDao.findAll(), Messages.EMPLOYER_DATA_LISTED);
+        return new SuccessDataResult<>(this.employerDao.findAll(), Messages.EMPLOYER_SUCCESS_DATA_LISTED);
     }
 
     @Override
@@ -32,21 +32,21 @@ public class EmployerManager implements EmployerService {
         Matcher matcher = pattern.matcher(employer.getEmail());
 
         if (employer.getCompanyName().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.EMPLOYER_ERROR_COMPANY_NAME_IS_BLANK);
         if (employer.getWebsite().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.EMPLOYER_ERROR_WEBSITE_IS_BLANK);
         if (employer.getTelephone().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.EMPLOYER_ERROR_TELEPHONE_IS_BLANK);
         if (employer.getEmail().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_BLANK);
         if (employer.getPassword().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_PASSWORD_IS_BLANK);
         if (!matcher.matches())
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_NOT_VALID);
         if (this.employerDao.existsByEmail(employer.getEmail()))
-            return new ErrorResult(Messages.EMPLOYER_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_EMAIL_ALREADY_EXISTS);
 
         this.employerDao.save(employer);
-        return new SuccessResult(Messages.EMPLOYER_ADDED);
+        return new SuccessResult(Messages.EMPLOYER_SUCCESS_ADDED);
     }
 }

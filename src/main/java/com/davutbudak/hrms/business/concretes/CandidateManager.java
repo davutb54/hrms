@@ -21,29 +21,27 @@ public class CandidateManager implements CandidateService {
 
     @Override
     public DataResult<List<Candidate>> getAll() {
-        return new SuccessDataResult<>(this.candidateDao.findAll(), Messages.CANDIDATE_DATA_LISTED);
+        return new SuccessDataResult<>(this.candidateDao.findAll(), Messages.CANDIDATE_SUCCESS_DATA_LISTED);
     }
 
     @Override
     public Result add(Candidate candidate) {
         if (candidate.getName().isEmpty())
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.CANDIDATE_ERROR_NAME_IS_BLANK);
         if (candidate.getSurname().isEmpty())
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.CANDIDATE_ERROR_SURNAME_IS_BLANK);
         if (candidate.getEmail().isEmpty())
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_BLANK);
         if (candidate.getPassword().isEmpty())
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_PASSWORD_IS_BLANK);
         if (candidate.getIdentityNumber().isEmpty())
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
-        if (candidate.getYearOfBirth()==0)
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.CANDIDATE_ERROR_IDENTITY_NUMBER_IS_BLANK);
         if (this.candidateDao.existsByEmail(candidate.getEmail()))
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.USER_ERROR_EMAIL_ALREADY_EXISTS);
         if (this.candidateDao.existsByIdentityNumber(candidate.getIdentityNumber()))
-            return new ErrorResult(Messages.CANDIDATE_ADD_ERROR);
+            return new ErrorResult(Messages.CANDIDATE_ERROR_IDENTITY_NUMBER_ALREADY_EXISTS);
 
         this.candidateDao.save(candidate);
-        return new SuccessResult(Messages.CANDIDATE_ADDED);
+        return new SuccessResult(Messages.CANDIDATE_SUCCESS_ADDED);
     }
 }

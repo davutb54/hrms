@@ -2,19 +2,6 @@
 -- Please log an issue at https://redmine.postgresql.org/projects/pgadmin4/issues/new if you find any bugs, including reproduction steps.
 BEGIN;
 
--- Database: hrms
-
--- DROP DATABASE hrms;
-
-CREATE DATABASE hrms
-    WITH 
-    OWNER = postgres
-    ENCODING = 'UTF8'
-    LC_COLLATE = 'Turkish_Turkey.1254'
-    LC_CTYPE = 'Turkish_Turkey.1254'
-    TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
-
 CREATE TABLE public.candidates
 (
     user_id integer NOT NULL,

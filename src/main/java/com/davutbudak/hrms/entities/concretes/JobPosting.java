@@ -5,15 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.swing.*;
 import java.sql.Date;
 
 @Data
 @Entity
-@Table(name = "job_advertisement")
+@Table(name = "job_postings")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobAdvertisement {
+public class JobPosting {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -51,5 +50,5 @@ public class JobAdvertisement {
     private Date deadline;
 
     @Column(name = "is_active")
-    private boolean isActive;
+    private boolean active;
 }

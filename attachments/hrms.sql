@@ -2,6 +2,7 @@
 -- Please log an issue at https://redmine.postgresql.org/projects/pgadmin4/issues/new if you find any bugs, including reproduction steps.
 BEGIN;
 
+
 CREATE TABLE public.candidates
 (
     user_id integer NOT NULL,
@@ -10,6 +11,13 @@ CREATE TABLE public.candidates
     identity_number character varying NOT NULL,
     year_of_birth integer NOT NULL,
     PRIMARY KEY (user_id)
+);
+
+CREATE TABLE public.cities
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    name character varying NOT NULL,
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE public.employers
@@ -25,6 +33,22 @@ CREATE TABLE public.job_positions
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     name character varying NOT NULL,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE public.job_postings
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    employer_id integer NOT NULL,
+    job_position_id integer NOT NULL,
+    city_id integer NOT NULL,
+    job_description character varying NOT NULL,
+    min_salary integer,
+    max_salary integer,
+    number_of_open_positions integer NOT NULL,
+    release_date date NOT NULL,
+    deadline date NOT NULL,
+    is_active boolean NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -53,6 +77,24 @@ ALTER TABLE public.candidates
 ALTER TABLE public.employers
     ADD FOREIGN KEY (user_id)
     REFERENCES public.users (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (city_id)
+    REFERENCES public.cities (id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (employer_id)
+    REFERENCES public.employers (user_id)
+    NOT VALID;
+
+
+ALTER TABLE public.job_postings
+    ADD FOREIGN KEY (job_position_id)
+    REFERENCES public.job_positions (id)
     NOT VALID;
 
 

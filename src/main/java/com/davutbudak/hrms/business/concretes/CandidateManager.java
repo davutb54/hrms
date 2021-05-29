@@ -36,6 +36,8 @@ public class CandidateManager implements CandidateService {
             return new ErrorResult(Messages.USER_ERROR_PASSWORD_IS_BLANK);
         if (candidate.getIdentityNumber().isEmpty())
             return new ErrorResult(Messages.CANDIDATE_ERROR_IDENTITY_NUMBER_IS_BLANK);
+        if (candidate.getYearOfBirth()<=0)
+            return new ErrorResult(Messages.CANDIDATE_ERROR_YEAR_OF_BIRTH_IS_BLANK);
         if (this.candidateDao.existsByEmail(candidate.getEmail()))
             return new ErrorResult(Messages.USER_ERROR_EMAIL_ALREADY_EXISTS);
         if (this.candidateDao.existsByIdentityNumber(candidate.getIdentityNumber()))

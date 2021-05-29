@@ -31,4 +31,22 @@ public class Messages {
     public static String EMPLOYER_ERROR_COMPANY_NAME_IS_BLANK = "Employer's company name is blank";
     public static String EMPLOYER_ERROR_WEBSITE_IS_BLANK = "Employer's website is blank";
     public static String EMPLOYER_ERROR_TELEPHONE_IS_BLANK = "Employer's telephone number is blank";
+
+    //Job Posting
+    public static String JOB_POSTING_SUCCESS_ACTIVES_LISTED = "Active job postings listed";
+    public static String JOB_POSTING_SUCCESS_ACTIVES_SORTED_BY_RELEASE_DATE = "Active job postings sorted by release date";
+    public static String JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER = "Active job postings listed by employer";
+    public static String JOB_POSTING_SUCCESS_DEACTIVATED = "Job posting deactivated";
+    public static String JOB_POSTING_SUCCESS_ADDED = "Job posting added";
+    public static String JOB_POSTING_SUCCESS_UPDATED = "Job posting updated";
+
+    public static String JOB_POSTING_ERROR_EMPLOYER_IS_BLANK = "Job posting's employer is blank";
+    public static String JOB_POSTING_ERROR_JOB_POSITION_IS_BLANK = "Job posting's job position is blank";
+    public static String JOB_POSTING_ERROR_CITY_IS_BLANK = "Job posting's city is blank";
+    public static String JOB_POSTING_ERROR_JOB_DESCRIPTION_IS_BLANK = "Job posting's description is blank";
+    public static String JOB_POSTING_ERROR_NUMBER_OF_OPEN_POSITIONS_IS_BLANK = "Job posting's number of open positions is blank";
+    public static String JOB_POSTING_ERROR_RELEASE_DATE_IS_BLANK = "Job posting's release date is blank";
+    public static String JOB_POSTING_ERROR_DEADLINE_IS_BLANK = "Job posting's deadline is blank";
+    public static String JOB_POSTING_ERROR_ACTIVE_IS_BLANK = "Job posting's active is blank";
+
 }

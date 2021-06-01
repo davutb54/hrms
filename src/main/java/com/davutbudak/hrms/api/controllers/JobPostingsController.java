@@ -4,6 +4,7 @@ import com.davutbudak.hrms.business.abstracts.JobPostingService;
 import com.davutbudak.hrms.core.utilities.results.DataResult;
 import com.davutbudak.hrms.core.utilities.results.Result;
 import com.davutbudak.hrms.entities.concretes.JobPosting;
+import com.davutbudak.hrms.entities.dtos.JobPostingForListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,18 +21,18 @@ public class JobPostingsController {
     }
 
     @GetMapping("/getActives")
-    public DataResult<List<JobPosting>> getActiveJobPostings(){
-        return this.jobPostingService.findAllByActive();
+    public DataResult<List<JobPostingForListDto>> getActiveJobPostings(){
+        return this.jobPostingService.getByActive();
     }
 
     @GetMapping("/getActivesSortedByReleaseDate")
-    public DataResult<List<JobPosting>> getActivesSortedByReleaseDate(){
-        return this.jobPostingService.findAllByActiveOrderByReleaseDate();
+    public DataResult<List<JobPostingForListDto>> getActivesSortedByReleaseDate(){
+        return this.jobPostingService.getByActiveSortedByReleaseDate();
     }
 
     @GetMapping("/getActivesByEmployer")
-    public DataResult<List<JobPosting>> getActivesByEmployer(@RequestParam int employerId){
-        return this.jobPostingService.findByActiveAndEmployer(employerId);
+    public DataResult<List<JobPostingForListDto>> getActivesByEmployer(@RequestParam int employerId){
+        return this.jobPostingService.getByActiveAndEmployer(employerId);
     }
 
     @PostMapping("/deActive")

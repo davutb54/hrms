@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +14,6 @@ public class JobPostingForListDto {
     private String companyName;
     private String jobPositionName;
     private int numberOfOpenPositions;
-    private Date releaseDate;
-    private Date deadline;
+    private LocalDate releaseDate;
+    private LocalDate deadline;
 }

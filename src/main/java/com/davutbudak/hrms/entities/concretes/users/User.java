@@ -1,13 +1,10 @@
-package com.davutbudak.hrms.entities.concretes;
+package com.davutbudak.hrms.entities.concretes.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -22,14 +19,9 @@ public class User {
     @Column(name = "id")
     private int id;
 
-    @NotEmpty
-    @NotNull
-    @Email
     @Column(name = "email")
     private String email;
 
-    @NotEmpty
-    @NotNull
     @Column(name = "password")
     private String password;
 

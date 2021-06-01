@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -15,7 +13,6 @@ import java.util.List;
 @Table(name = "job_positions")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
 public class JobPosition {
 
     @Id
@@ -23,11 +20,10 @@ public class JobPosition {
     @Column(name = "id")
     private int id;
 
-    @NotEmpty
-    @NotNull
     @Column(name = "name")
     private String name;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
     @OneToMany(mappedBy = "jobPosition")
     private List<JobPosting> jobPostings;
 

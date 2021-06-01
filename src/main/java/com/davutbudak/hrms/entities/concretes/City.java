@@ -13,7 +13,6 @@ import java.util.List;
 @Table(name = "cities")
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
 public class City
 {
     @Id
@@ -24,6 +23,7 @@ public class City
     @Column(name = "name")
     private String name;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
     @OneToMany(mappedBy = "city")
     private List<JobPosting> jobPostings;
 }

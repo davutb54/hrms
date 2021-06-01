@@ -28,19 +28,9 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public Result add(Employer employer) {
-        Pattern pattern= Pattern.compile("@" + employer.getWebsite());
+        Pattern pattern= Pattern.compile(employer.getWebsite());
         Matcher matcher = pattern.matcher(employer.getEmail());
 
-        if (employer.getCompanyName().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ERROR_COMPANY_NAME_IS_BLANK);
-        if (employer.getWebsite().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ERROR_WEBSITE_IS_BLANK);
-        if (employer.getTelephone().isEmpty())
-            return new ErrorResult(Messages.EMPLOYER_ERROR_TELEPHONE_IS_BLANK);
-        if (employer.getEmail().isEmpty())
-            return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_BLANK);
-        if (employer.getPassword().isEmpty())
-            return new ErrorResult(Messages.USER_ERROR_PASSWORD_IS_BLANK);
         if (!matcher.matches())
             return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_NOT_VALID);
         if (this.employerDao.existsByEmail(employer.getEmail()))

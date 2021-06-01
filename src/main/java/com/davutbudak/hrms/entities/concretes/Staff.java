@@ -8,6 +8,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -17,9 +19,13 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Staff extends User{
 
+    @NotEmpty
+    @NotNull
     @Column(name = "name")
     private String name;
 
+    @NotEmpty
+    @NotNull
     @Column(name = "surname")
     private String surname;
 }

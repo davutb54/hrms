@@ -43,22 +43,6 @@ public class JobPostingManager implements JobPostingService {
 
     @Override
     public Result add(JobPosting jobPosting) {
-        if (jobPosting.getEmployer()==null)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_EMPLOYER_IS_BLANK);
-        if (jobPosting.getJobPosition()==null)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_JOB_POSITION_IS_BLANK);
-        if (jobPosting.getCity()==null)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_CITY_IS_BLANK);
-        if (jobPosting.getJobDescription().isEmpty())
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_JOB_DESCRIPTION_IS_BLANK);
-        if (jobPosting.getNumberOfOpenPositions()<=0)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_NUMBER_OF_OPEN_POSITIONS_IS_BLANK);
-        if (jobPosting.getReleaseDate()==null)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_RELEASE_DATE_IS_BLANK);
-        if (jobPosting.getDeadline()==null)
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_DEADLINE_IS_BLANK);
-        if (!jobPosting.isActive() && jobPosting.isActive())
-            return new ErrorResult(Messages.JOB_POSTING_ERROR_ACTIVE_IS_BLANK);
 
         this.jobPostingDao.save(jobPosting);
         return new SuccessResult(Messages.JOB_POSTING_SUCCESS_ADDED);

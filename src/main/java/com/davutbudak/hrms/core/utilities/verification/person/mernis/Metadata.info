@@ -4,12 +4,12 @@
     <Version>5.11.5.0</Version>
     <AccountType>Basic</AccountType>
     <LibrariesFolder>easywsdl</LibrariesFolder>
-    <MainClass>IDWKPSPublicSoap</MainClass>
+    <MainClass>VVKKPSPublicSoap</MainClass>
   </Info>
   <Settings>
     <Url>https://tckimlik.nvi.gov.tr/service/kpspublic.asmx</Url>
     <ClassPrefix/>
-    <PackageName>services.mernis</PackageName>
+    <PackageName>com.davutbudak.hrms.core.utilities.verification.person.mernis</PackageName>
     <AddDocumentation>false</AddDocumentation>
     <EnableAdvancedFeatures>true</EnableAdvancedFeatures>
     <EnableMTOM>false</EnableMTOM>
@@ -29,13 +29,13 @@
     <DetectDictionaries>false</DetectDictionaries>
   </Settings>
   <Files>
-    <File>IDWDateTimeConverter.java</File>
-    <File>IDWExtendedSoapSerializationEnvelope.java</File>
-    <File>IDWHelper.java</File>
-    <File>IDWKPSPublicSoap.java</File>
-    <File>IDWKPSPublicSoap12.java</File>
-    <File>IDWMarshalGuid.java</File>
-    <File>IDWStandardDateTimeConverter.java</File>
+    <File>DateTimeConverter.java</File>
+    <File>ExtendedSoapSerializationEnvelope.java</File>
+    <File>Helper.java</File>
+    <File>KPSPublicSoap.java</File>
+    <File>KPSPublicSoap12.java</File>
+    <File>MarshalGuid.java</File>
+    <File>StandardDateTimeConverter.java</File>
   </Files>
   <Libraries>
     <File>ExKsoap2-1.0.3.1.jar</File>

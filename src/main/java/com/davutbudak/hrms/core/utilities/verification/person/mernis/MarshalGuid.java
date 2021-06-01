@@ -1,4 +1,4 @@
-package services.mernis;
+package com.davutbudak.hrms.core.utilities.verification.person.mernis;
 
 //----------------------------------------------------
 //
@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 
-public class IDWMarshalGuid implements Marshal
+public class MarshalGuid implements Marshal
 {
     public java.lang.Object readInstance(XmlPullParser parser, java.lang.String namespace, java.lang.String name,PropertyInfo expected) throws IOException, XmlPullParserException
     {

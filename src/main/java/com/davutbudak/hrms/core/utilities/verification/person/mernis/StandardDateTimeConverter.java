@@ -1,4 +1,4 @@
-package services.mernis;
+package com.davutbudak.hrms.core.utilities.verification.person.mernis;
 
 //----------------------------------------------------
 //
@@ -15,7 +15,7 @@ import java.util.Locale;
 
 
 
-public class IDWStandardDateTimeConverter implements IDWDateTimeConverter
+public class StandardDateTimeConverter implements DateTimeConverter
 {
     public java.util.TimeZone TimeZone=java.util.TimeZone.getTimeZone("UTC");
 

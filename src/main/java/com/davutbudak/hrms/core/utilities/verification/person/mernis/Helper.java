@@ -1,4 +1,4 @@
-package services.mernis;
+package com.davutbudak.hrms.core.utilities.verification.person.mernis;
 
 //----------------------------------------------------
 //
@@ -15,7 +15,7 @@ import org.kxml2.kdom.Element;
 import org.kxml2.kdom.Node;
 
 
-public class IDWHelper
+public class Helper
 {
     public static < T, E> T getKeyByValue(java.util.Map< T, E> map, E value) {
         for (java.util.Map.Entry< T, E> entry : map.entrySet()) {
@@ -68,7 +68,7 @@ public class IDWHelper
             if (obj instanceof java.util.Date)
             {
                 java.util.Date date = (java.util.Date) obj;
-                value = IDWExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(date);
+                value = ExtendedSoapSerializationEnvelope.getDateTimeConverter().getStringFromDateTime(date);
             }
             parentElement.addChild(org.kxml2.kdom.Node.TEXT,value);
         }

@@ -1,4 +1,4 @@
-package services.mernis;
+package com.davutbudak.hrms.core.utilities.verification.person.mernis;
 
 //----------------------------------------------------
 //
@@ -12,7 +12,7 @@ package services.mernis;
 import java.util.Date;
 
 
-public interface IDWDateTimeConverter
+public interface DateTimeConverter
 {
     java.util.Date convertDateTime(String strDate);
     java.util.Date convertTime(String strDate);

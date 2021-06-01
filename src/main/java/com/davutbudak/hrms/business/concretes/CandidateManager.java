@@ -4,7 +4,7 @@ import com.davutbudak.hrms.business.abstracts.CandidateService;
 import com.davutbudak.hrms.business.constants.Messages;
 import com.davutbudak.hrms.core.utilities.results.*;
 import com.davutbudak.hrms.dataAccess.abstracts.CandidateDao;
-import com.davutbudak.hrms.entities.concretes.Candidate;
+import com.davutbudak.hrms.entities.concretes.users.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

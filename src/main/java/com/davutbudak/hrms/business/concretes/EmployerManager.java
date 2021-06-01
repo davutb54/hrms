@@ -4,7 +4,7 @@ import com.davutbudak.hrms.business.abstracts.EmployerService;
 import com.davutbudak.hrms.business.constants.Messages;
 import com.davutbudak.hrms.core.utilities.results.*;
 import com.davutbudak.hrms.dataAccess.abstracts.EmployerDao;
-import com.davutbudak.hrms.entities.concretes.Employer;
+import com.davutbudak.hrms.entities.concretes.users.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -5,6 +5,7 @@ import com.davutbudak.hrms.core.utilities.results.DataResult;
 import com.davutbudak.hrms.core.utilities.results.Result;
 import com.davutbudak.hrms.entities.concretes.users.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,12 +20,12 @@ public class CandidatesController {
         this.candidateService = candidateService;
     }
 
-    @GetMapping("/getall")
-    public DataResult<List<Candidate>> getAll(){
-        return this.candidateService.getAll();
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(this.candidateService.getAll());
     }
      @PostMapping("/add")
-    public Result add(@RequestBody Candidate candidate){
-        return this.candidateService.add(candidate);
+    public ResponseEntity<?> add(@RequestBody Candidate candidate){
+        return ResponseEntity.ok(this.candidateService.add(candidate));
     }
 }

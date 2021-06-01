@@ -6,6 +6,7 @@ import com.davutbudak.hrms.core.utilities.results.Result;
 import com.davutbudak.hrms.entities.concretes.JobPosting;
 import com.davutbudak.hrms.entities.dtos.JobPostingForListDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,27 +22,27 @@ public class JobPostingsController {
     }
 
     @GetMapping("/getActives")
-    public DataResult<List<JobPostingForListDto>> getActiveJobPostings(){
-        return this.jobPostingService.getByActive();
+    public ResponseEntity<?> getActiveJobPostings(){
+        return ResponseEntity.ok(this.jobPostingService.getByActive());
     }
 
     @GetMapping("/getActivesSortedByReleaseDate")
-    public DataResult<List<JobPostingForListDto>> getActivesSortedByReleaseDate(){
-        return this.jobPostingService.getByActiveSortedByReleaseDate();
+    public ResponseEntity<?> getActivesSortedByReleaseDate(){
+        return ResponseEntity.ok(this.jobPostingService.getByActiveSortedByReleaseDate());
     }
 
     @GetMapping("/getActivesByEmployer")
-    public DataResult<List<JobPostingForListDto>> getActivesByEmployer(@RequestParam int employerId){
-        return this.jobPostingService.getByActiveAndEmployer(employerId);
+    public ResponseEntity<?> getActivesByEmployer(@RequestParam int employerId){
+        return ResponseEntity.ok(this.jobPostingService.getByActiveAndEmployer(employerId));
     }
 
     @PostMapping("/deActive")
-    public Result deActive(@RequestBody JobPosting jobPosting){
-        return this.jobPostingService.deActive(jobPosting);
+    public ResponseEntity<?> deActive(@RequestBody JobPosting jobPosting){
+        return ResponseEntity.ok(this.jobPostingService.deActive(jobPosting));
     }
 
     @PostMapping("/add")
-    public Result add(@RequestBody JobPosting jobPosting){
-        return this.jobPostingService.add(jobPosting);
+    public ResponseEntity<?> add(@RequestBody JobPosting jobPosting){
+        return ResponseEntity.ok(this.jobPostingService.add(jobPosting));
     }
 }

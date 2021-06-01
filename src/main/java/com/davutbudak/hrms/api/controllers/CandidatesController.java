@@ -3,7 +3,7 @@ package com.davutbudak.hrms.api.controllers;
 import com.davutbudak.hrms.business.abstracts.CandidateService;
 import com.davutbudak.hrms.core.utilities.results.DataResult;
 import com.davutbudak.hrms.core.utilities.results.Result;
-import com.davutbudak.hrms.entities.concretes.Candidate;
+import com.davutbudak.hrms.entities.concretes.users.Candidate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

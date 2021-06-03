@@ -11,11 +11,10 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "job_positions")
+@Table(name = "institutions")
 @AllArgsConstructor
 @NoArgsConstructor
-public class JobPosition {
-
+public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,11 +24,6 @@ public class JobPosition {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "jobPosition")
-    private List<JobPosting> jobPostings;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "jobPosition")
+    @OneToMany(mappedBy = "institution")
     private List<Experience> experiences;
-
 }

@@ -1,7 +1,7 @@
-package com.davutbudak.hrms.entities.concretes.cv;
+package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CVUniversity;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davutbudak.hrms.entities.concretes.cv.Education;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +27,7 @@ public class University {
     @Column(name = "department")
     private String department;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvUniversities"})
+    @JsonIgnore
     @OneToMany(mappedBy = "university")
-    private List<CVUniversity> cvUniversities;
+    private List<Education> educations;
 }

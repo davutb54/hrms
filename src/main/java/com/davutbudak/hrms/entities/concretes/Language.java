@@ -1,7 +1,7 @@
-package com.davutbudak.hrms.entities.concretes.cv;
+package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CVLanguage;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davutbudak.hrms.entities.concretes.cv.KnownLanguage;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "language")
+@Table(name = "languages")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Language {
@@ -24,7 +24,7 @@ public class Language {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvLanguages"})
+    @JsonIgnore
     @OneToMany(mappedBy = "language")
-    private List<CVLanguage> cvLanguages;
+    private List<KnownLanguage> knownLanguages;
 }

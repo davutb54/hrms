@@ -1,6 +1,7 @@
 package com.davutbudak.hrms.entities.concretes;
 
 import com.davutbudak.hrms.entities.concretes.users.Employer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,14 +21,17 @@ public class JobPosting {
     @Column(name = "id")
     private int id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "employer_id")
     private Employer employer;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "city_id")
     private City city;

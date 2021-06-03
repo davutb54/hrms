@@ -1,7 +1,7 @@
 package com.davutbudak.hrms.entities.concretes.users;
 
 import com.davutbudak.hrms.entities.concretes.JobPosting;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +26,7 @@ public class Employer extends User {
     @Column(name = "telephone")
     private String telephone;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","jobPostings"})
+    @JsonIgnore
     @OneToMany(mappedBy = "employer")
     private List<JobPosting> jobPostings;
 

@@ -1,31 +1,28 @@
-package com.davutbudak.hrms.entities.concretes.cv.intermediate;
+package com.davutbudak.hrms.entities.concretes.cv;
 
-import com.davutbudak.hrms.entities.concretes.cv.University;
-import com.davutbudak.hrms.entities.concretes.cv.CV;
+import com.davutbudak.hrms.entities.concretes.University;
+import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvEducation;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "cv_universities")
+@Table(name = "educations")
 @AllArgsConstructor
 @NoArgsConstructor
-public class CVUniversity {
-
+public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "cv_id")
-    private CV cv;
-
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "university_id")
     private University university;
@@ -38,4 +35,8 @@ public class CVUniversity {
 
     @Column(name = "graduated")
     private boolean graduated;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "education")
+    private List<CvEducation> cvEducations;
 }

@@ -1,7 +1,7 @@
-package com.davutbudak.hrms.entities.concretes.cv;
+package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CVTechnology;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvTechnology;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Technology {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -23,7 +24,7 @@ public class Technology {
     @Column(name = "name")
     private String name;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvTechnologies"})
+    @JsonIgnore
     @OneToMany(mappedBy = "technology")
-    private List<CVTechnology> cvTechnologies;
+    private List<CvTechnology> cvTechnologies;
 }

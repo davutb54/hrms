@@ -1,7 +1,7 @@
-package com.davutbudak.hrms.entities.concretes.cv;
+package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CVImage;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvImage;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,7 +24,7 @@ public class Image {
     @Column(name = "url")
     private String url;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvImages"})
+    @JsonIgnore
     @OneToMany(mappedBy = "image")
-    private List<CVImage> cvImages;
+    private List<CvImage> cvImages;
 }

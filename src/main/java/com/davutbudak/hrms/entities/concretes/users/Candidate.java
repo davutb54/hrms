@@ -1,7 +1,7 @@
 package com.davutbudak.hrms.entities.concretes.users;
 
-import com.davutbudak.hrms.entities.concretes.cv.CV;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvCandidate;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "candidates")
 @AllArgsConstructor
 @NoArgsConstructor
+
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
 
@@ -29,7 +30,8 @@ public class Candidate extends User {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler","cvs"})
+    @JsonIgnore
     @OneToMany(mappedBy = "candidate")
-    private List<CV> cvs;
+    private List<CvCandidate> cvCandidates;
+
 }

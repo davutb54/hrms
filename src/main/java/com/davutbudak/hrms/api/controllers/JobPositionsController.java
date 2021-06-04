@@ -2,19 +2,15 @@
 package com.davutbudak.hrms.api.controllers;
 
 import com.davutbudak.hrms.business.abstracts.JobPositionService;
-import com.davutbudak.hrms.core.utilities.results.DataResult;
-import com.davutbudak.hrms.core.utilities.results.Result;
 import com.davutbudak.hrms.entities.concretes.JobPosition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/api/jobPositions")
 public class JobPositionsController {
-    private JobPositionService jobPositionService;
+    private final JobPositionService jobPositionService;
 
     @Autowired
     public JobPositionsController(JobPositionService jobPositionService) {
@@ -28,7 +24,7 @@ public class JobPositionsController {
 
     @PostMapping("/add")
     public ResponseEntity<?> add(@RequestBody JobPosition jobPosition){
-        return ResponseEntity.ok(this.jobPositionService.add(jobPosition));
+        return ResponseEntity.ok(jobPositionService.add(jobPosition));
     }
 
 }

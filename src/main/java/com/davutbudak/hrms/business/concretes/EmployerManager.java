@@ -3,7 +3,7 @@ package com.davutbudak.hrms.business.concretes;
 import com.davutbudak.hrms.business.abstracts.EmployerService;
 import com.davutbudak.hrms.business.constants.Messages;
 import com.davutbudak.hrms.core.utilities.results.*;
-import com.davutbudak.hrms.dataAccess.abstracts.EmployerDao;
+import com.davutbudak.hrms.dataAccess.abstracts.users.EmployerDao;
 import com.davutbudak.hrms.entities.concretes.users.Employer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 
 @Service
 public class EmployerManager implements EmployerService {
-    private EmployerDao employerDao;
+    private final EmployerDao employerDao;
 
     @Autowired
     public EmployerManager(EmployerDao employerDao) {
@@ -23,7 +23,7 @@ public class EmployerManager implements EmployerService {
 
     @Override
     public DataResult<List<Employer>> getAll() {
-        return new SuccessDataResult<>(this.employerDao.findAll(), Messages.EMPLOYER_SUCCESS_DATA_LISTED);
+        return new SuccessDataResult<>(employerDao.findAll(), Messages.EMPLOYER_SUCCESS_DATA_LISTED);
     }
 
     @Override
@@ -33,10 +33,10 @@ public class EmployerManager implements EmployerService {
 
         if (!matcher.matches())
             return new ErrorResult(Messages.USER_ERROR_EMAIL_IS_NOT_VALID);
-        if (this.employerDao.existsByEmail(employer.getEmail()))
+        if (employerDao.existsByEmail(employer.getEmail()))
             return new ErrorResult(Messages.USER_ERROR_EMAIL_ALREADY_EXISTS);
 
-        this.employerDao.save(employer);
+        employerDao.save(employer);
         return new SuccessResult(Messages.EMPLOYER_SUCCESS_ADDED);
     }
 }

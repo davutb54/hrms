@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 public class JobPositionManager implements JobPositionService {
-    private JobPositionDao jobPositionDao;
+    private final JobPositionDao jobPositionDao;
 
     @Autowired
     public JobPositionManager(JobPositionDao jobPositionDao) {
@@ -21,15 +21,15 @@ public class JobPositionManager implements JobPositionService {
 
     @Override
     public DataResult<List<JobPosition>> getAll() {
-        return new SuccessDataResult<>(this.jobPositionDao.findAll(), Messages.JOB_POSITION_SUCCESS_DATA_LISTED);
+        return new SuccessDataResult<>(jobPositionDao.findAll(), Messages.JOB_POSITION_SUCCESS_DATA_LISTED);
     }
 
     @Override
     public Result add(JobPosition jobPosition) {
-        if (this.jobPositionDao.existsByName(jobPosition.getName()))
+        if (jobPositionDao.existsByName(jobPosition.getName()))
             return new ErrorResult(Messages.JOB_POSITION_ERROR_ALREADY_EXISTS);
 
-        this.jobPositionDao.save(jobPosition);
+        jobPositionDao.save(jobPosition);
         return new SuccessResult(Messages.JOB_POSITION_SUCCESS_ADDED);
     }
 

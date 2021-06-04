@@ -13,5 +13,4 @@ public interface JobPostingService {
     DataResult<List<JobPostingForListDto>> getByActiveAndEmployer(int employerId);
     Result deActive(JobPosting jobPosting);
     Result add(JobPosting jobPosting);
-    Result update(JobPosting jobPosting);
 }

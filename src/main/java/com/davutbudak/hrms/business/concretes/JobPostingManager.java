@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class JobPostingManager implements JobPostingService {
-    private JobPostingDao jobPostingDao;
+    private final JobPostingDao jobPostingDao;
 
     @Autowired
     public JobPostingManager(JobPostingDao jobPostingDao) {
@@ -22,37 +22,30 @@ public class JobPostingManager implements JobPostingService {
 
     @Override
     public DataResult<List<JobPostingForListDto>> getByActive() {
-        return new SuccessDataResult<>(this.jobPostingDao.getByActive(true), Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED);
+        return new SuccessDataResult<>(jobPostingDao.getByActive(true), Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED);
     }
 
     @Override
     public DataResult<List<JobPostingForListDto>> getByActiveSortedByReleaseDate() {
-        return new SuccessDataResult<>(this.jobPostingDao.getByActiveSortedByReleaseDate(true),Messages.JOB_POSTING_SUCCESS_ACTIVES_SORTED_BY_RELEASE_DATE);
+        return new SuccessDataResult<>(jobPostingDao.getByActiveSortedByReleaseDate(true),Messages.JOB_POSTING_SUCCESS_ACTIVES_SORTED_BY_RELEASE_DATE);
     }
 
     @Override
     public DataResult<List<JobPostingForListDto>> getByActiveAndEmployer(int employerId) {
-        return new SuccessDataResult<>(this.jobPostingDao.getByActiveAndEmployer(true,employerId),Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER);
+        return new SuccessDataResult<>(jobPostingDao.getByActiveAndEmployer(true,employerId),Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER);
     }
 
     @Override
     public Result deActive(JobPosting jobPosting) {
         jobPosting.setActive(false);
-        this.update(jobPosting);
+        jobPostingDao.save(jobPosting);
         return new SuccessResult(Messages.JOB_POSTING_SUCCESS_DEACTIVATED);
     }
 
     @Override
     public Result add(JobPosting jobPosting) {
 
-        this.jobPostingDao.save(jobPosting);
+        jobPostingDao.save(jobPosting);
         return new SuccessResult(Messages.JOB_POSTING_SUCCESS_ADDED);
     }
-
-    @Override
-    public Result update(JobPosting jobPosting) {
-        this.jobPostingDao.save(jobPosting);
-        return new SuccessResult(Messages.JOB_POSTING_SUCCESS_UPDATED);
-    }
-
 }

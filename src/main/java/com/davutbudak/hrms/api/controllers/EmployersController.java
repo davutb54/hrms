@@ -17,12 +17,12 @@ public class EmployersController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> getAll() {
         return ResponseEntity.ok(employerService.getAll());
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody Employer employer){
+    public ResponseEntity<?> add(@RequestBody Employer employer) {
         return ResponseEntity.ok(employerService.add(employer));
     }
 }

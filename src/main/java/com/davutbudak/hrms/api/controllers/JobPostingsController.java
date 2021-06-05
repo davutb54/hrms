@@ -17,27 +17,27 @@ public class JobPostingsController {
     }
 
     @GetMapping("/getActives")
-    public ResponseEntity<?> getActiveJobPostings(){
+    public ResponseEntity<?> getActiveJobPostings() {
         return ResponseEntity.ok(jobPostingService.getByActive());
     }
 
     @GetMapping("/getActivesSortedByReleaseDate")
-    public ResponseEntity<?> getActivesSortedByReleaseDate(){
+    public ResponseEntity<?> getActivesSortedByReleaseDate() {
         return ResponseEntity.ok(jobPostingService.getByActiveSortedByReleaseDate());
     }
 
     @GetMapping("/getActivesByEmployer")
-    public ResponseEntity<?> getActivesByEmployer(@RequestParam int employerId){
+    public ResponseEntity<?> getActivesByEmployer(@RequestParam int employerId) {
         return ResponseEntity.ok(jobPostingService.getByActiveAndEmployer(employerId));
     }
 
     @PostMapping("/deActive")
-    public ResponseEntity<?> deActive(@RequestBody JobPosting jobPosting){
+    public ResponseEntity<?> deActive(@RequestBody JobPosting jobPosting) {
         return ResponseEntity.ok(jobPostingService.deActive(jobPosting));
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody JobPosting jobPosting){
+    public ResponseEntity<?> add(@RequestBody JobPosting jobPosting) {
         return ResponseEntity.ok(jobPostingService.add(jobPosting));
     }
 }

@@ -1,7 +1,7 @@
 package com.davutbudak.hrms.api.controllers;
 
 import com.davutbudak.hrms.business.abstracts.CvService;
-import com.davutbudak.hrms.entities.dtos.CvForAddDto;
+import com.davutbudak.hrms.entities.dtos.cv.CvForAddDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -18,12 +18,12 @@ public class JobPositionsController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<?> getAll(){
+    public ResponseEntity<?> getAll() {
         return ResponseEntity.ok(jobPositionService.getAll());
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> add(@RequestBody JobPosition jobPosition){
+    public ResponseEntity<?> add(@RequestBody JobPosition jobPosition) {
         return ResponseEntity.ok(jobPositionService.add(jobPosition));
     }
 

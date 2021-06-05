@@ -1,6 +1,6 @@
 package com.davutbudak.hrms.core.utilities.results;
 
-public class ErrorResult extends Result{
+public class ErrorResult extends Result {
 
     public ErrorResult() {
         super(false);

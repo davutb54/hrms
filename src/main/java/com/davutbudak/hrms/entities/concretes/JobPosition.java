@@ -3,6 +3,7 @@ package com.davutbudak.hrms.entities.concretes;
 import com.davutbudak.hrms.entities.concretes.cv.Experience;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Table(name = "job_positions")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class JobPosition {
 
     @Id
@@ -23,13 +25,5 @@ public class JobPosition {
 
     @Column(name = "name")
     private String name;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "jobPosition")
-    private List<JobPosting> jobPostings;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "jobPosition")
-    private List<Experience> experiences;
 
 }

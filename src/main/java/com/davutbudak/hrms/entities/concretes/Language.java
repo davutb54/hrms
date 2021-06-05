@@ -3,6 +3,7 @@ package com.davutbudak.hrms.entities.concretes;
 import com.davutbudak.hrms.entities.concretes.cv.KnownLanguage;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Table(name = "languages")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Language {
 
     @Id
@@ -23,8 +25,4 @@ public class Language {
 
     @Column(name = "name")
     private String name;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "language")
-    private List<KnownLanguage> knownLanguages;
 }

@@ -1,19 +1,18 @@
 package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvImage;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @Table(name = "images")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Image {
 
     @Id
@@ -23,8 +22,4 @@ public class Image {
 
     @Column(name = "url")
     private String url;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "image")
-    private List<CvImage> cvImages;
 }

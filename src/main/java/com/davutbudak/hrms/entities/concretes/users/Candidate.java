@@ -1,20 +1,20 @@
 package com.davutbudak.hrms.entities.concretes.users;
 
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvCandidate;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @Table(name = "candidates")
 @AllArgsConstructor
 @NoArgsConstructor
-
+@SuperBuilder
+@EqualsAndHashCode(callSuper = false)
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
 
@@ -29,9 +29,4 @@ public class Candidate extends User {
 
     @Column(name = "year_of_birth")
     private int yearOfBirth;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "candidate")
-    private List<CvCandidate> cvCandidates;
-
 }

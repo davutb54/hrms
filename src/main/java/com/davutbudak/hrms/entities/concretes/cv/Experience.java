@@ -1,22 +1,19 @@
 package com.davutbudak.hrms.entities.concretes.cv;
 
-import com.davutbudak.hrms.entities.concretes.Institution;
-import com.davutbudak.hrms.entities.concretes.JobPosition;
-import com.davutbudak.hrms.entities.concretes.cv.intermediate.CvExperience;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Data
 @Entity
 @Table(name = "experiences")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Experience {
 
     @Id
@@ -24,15 +21,11 @@ public class Experience {
     @Column(name = "id")
     private int id;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "job_position_id")
-    private JobPosition jobPosition;
+    @Column(name = "job_position_id")
+    private int jobPositionId;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "institution_id")
-    private Institution institution;
+    @Column(name = "institution_id")
+    private int institutionId;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -42,8 +35,4 @@ public class Experience {
 
     @Column(name = "working")
     private boolean working;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "experience")
-    private List<CvExperience> cvExperiences;
 }

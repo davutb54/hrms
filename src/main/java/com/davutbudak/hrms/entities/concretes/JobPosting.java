@@ -1,8 +1,7 @@
 package com.davutbudak.hrms.entities.concretes;
 
-import com.davutbudak.hrms.entities.concretes.users.Employer;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +13,7 @@ import java.time.LocalDate;
 @Table(name = "job_postings")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class JobPosting {
 
     @Id
@@ -21,20 +21,14 @@ public class JobPosting {
     @Column(name = "id")
     private int id;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "employer_id")
-    private Employer employer;
+    @Column(name = "employer_id")
+    private int employerId;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "job_position_id")
-    private JobPosition jobPosition;
+    @Column(name = "job_position_id")
+    private int jobPositionId;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "city_id")
-    private City city;
+    @Column(name = "city_id")
+    private int cityId;
 
     @Column(name = "job_description")
     private String jobDescription;

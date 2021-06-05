@@ -3,6 +3,7 @@ package com.davutbudak.hrms.entities.concretes;
 import com.davutbudak.hrms.entities.concretes.cv.Experience;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.util.List;
 @Table(name = "institutions")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +24,4 @@ public class Institution {
 
     @Column(name = "name")
     private String name;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "institution")
-    private List<Experience> experiences;
 }

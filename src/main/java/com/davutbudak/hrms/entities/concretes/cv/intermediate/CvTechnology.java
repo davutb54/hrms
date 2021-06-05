@@ -1,9 +1,7 @@
 package com.davutbudak.hrms.entities.concretes.cv.intermediate;
 
-import com.davutbudak.hrms.entities.concretes.cv.Cv;
-import com.davutbudak.hrms.entities.concretes.Technology;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,19 +12,16 @@ import javax.persistence.*;
 @Table(name = "cv_technologies")
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class CvTechnology {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "cv_id")
-    private Cv cv;
+    @Column(name = "cv_id")
+    private int cvId;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "technology_id")
-    private Technology technology;
+    @Column(name = "technology_id")
+    private int technologyId;
 }

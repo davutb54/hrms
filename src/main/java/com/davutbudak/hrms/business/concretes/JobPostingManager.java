@@ -27,12 +27,12 @@ public class JobPostingManager implements JobPostingService {
 
     @Override
     public DataResult<List<JobPostingForListDto>> getByActiveSortedByReleaseDate() {
-        return new SuccessDataResult<>(jobPostingDao.getByActiveSortedByReleaseDate(true),Messages.JOB_POSTING_SUCCESS_ACTIVES_SORTED_BY_RELEASE_DATE);
+        return new SuccessDataResult<>(jobPostingDao.getByActiveSortedByReleaseDate(true), Messages.JOB_POSTING_SUCCESS_ACTIVES_SORTED_BY_RELEASE_DATE);
     }
 
     @Override
     public DataResult<List<JobPostingForListDto>> getByActiveAndEmployer(int employerId) {
-        return new SuccessDataResult<>(jobPostingDao.getByActiveAndEmployer(true,employerId),Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER);
+        return new SuccessDataResult<>(jobPostingDao.getByActiveAndEmployer(true, employerId), Messages.JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER);
     }
 
     @Override

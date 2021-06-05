@@ -9,8 +9,12 @@ import java.util.List;
 
 public interface JobPostingService {
     DataResult<List<JobPostingForListDto>> getByActive();
+
     DataResult<List<JobPostingForListDto>> getByActiveSortedByReleaseDate();
+
     DataResult<List<JobPostingForListDto>> getByActiveAndEmployer(int employerId);
+
     Result deActive(JobPosting jobPosting);
+
     Result add(JobPosting jobPosting);
 }

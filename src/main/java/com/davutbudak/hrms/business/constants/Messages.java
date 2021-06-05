@@ -5,7 +5,6 @@ public class Messages {
     public static String USER_ERROR_EMAIL_IS_NOT_VALID = "User's email is not valid";
     public static String USER_ERROR_EMAIL_ALREADY_EXISTS = "User's email already exists";
 
-
     // Job Position
     public static String JOB_POSITION_SUCCESS_DATA_LISTED = "Job positions Listed";
     public static String JOB_POSITION_SUCCESS_ADDED = "Job position added";
@@ -28,6 +27,17 @@ public class Messages {
     public static String JOB_POSTING_SUCCESS_ACTIVES_LISTED_BY_EMPLOYER = "Active job postings listed by employer";
     public static String JOB_POSTING_SUCCESS_DEACTIVATED = "Job posting deactivated";
     public static String JOB_POSTING_SUCCESS_ADDED = "Job posting added";
-    public static String JOB_POSTING_SUCCESS_UPDATED = "Job posting updated";
+
+    //Cv
+    public static String CV_SUCCESS_GET_CV_BY_CANDIDATE = "Cv get by candidate";
+    public static String CV_SUCCESS_GET_ALL_SORTED_BY_EXPERIENCE = "Cvs listed by Experience";
+    public static String CV_SUCCESS_GET_ALL_SORTED_BY_GRADUATE = "Cvs listed by graduate";
+    public static String CV_SUCCESS_ADDED = "Cv added";
+
+    //Mernis
+    public static String MERNIS_ERROR_VERIFICATION_FAILED = "Mernis verification failed";
+
+    //Email verification
+    public static String EMAIL_VERIFICATION_ERROR_VERIFICATION_FAILED = "Email verification failed";
 
 }

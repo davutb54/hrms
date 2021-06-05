@@ -2,14 +2,17 @@ package com.davutbudak.hrms.business.abstracts;
 
 import com.davutbudak.hrms.core.utilities.results.DataResult;
 import com.davutbudak.hrms.core.utilities.results.Result;
-import com.davutbudak.hrms.entities.concretes.cv.Cv;
-import com.davutbudak.hrms.entities.dtos.CvForAddDto;
+import com.davutbudak.hrms.entities.dtos.cv.CvForAddDto;
+import com.davutbudak.hrms.entities.dtos.cv.CvForListDto;
 
 import java.util.List;
 
 public interface CvService {
-    DataResult<List<Cv>> getByCandidate(int candidateId);
-    DataResult<List<Cv>> getAllSortedByExperience();
-    DataResult<List<Cv>> getAllSortedByGraduate();
+    DataResult<CvForListDto> getByCandidate(int candidateId);
+
+    DataResult<List<CvForListDto>> getAllSortedByExperience();
+
+    DataResult<List<CvForListDto>> getAllSortedByGraduate();
+
     Result add(CvForAddDto cv);
 }

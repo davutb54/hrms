@@ -40,4 +40,7 @@ public class Messages {
     //Email verification
     public static String EMAIL_VERIFICATION_ERROR_VERIFICATION_FAILED = "Email verification failed";
 
+    //Image
+    public static String IMAGE_SUCCESS_IMAGE_ADDED = "Image added to cloudinary";
+
 }

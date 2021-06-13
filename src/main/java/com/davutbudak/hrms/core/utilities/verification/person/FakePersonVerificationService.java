@@ -1,5 +1,8 @@
 package com.davutbudak.hrms.core.utilities.verification.person;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FakePersonVerificationService implements PersonVerification {
     @Override
     public boolean verify(long identityNumber, String name, String surname, int yearOfBirth) throws Exception {

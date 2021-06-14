@@ -12,13 +12,13 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface JobPostingDao extends JpaRepository<JobPosting, Integer> {
-    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,e.companyName,j.name,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace) from JobPosting as jp join Employer as e on e.id = jp.employerId join JobPosition as j on jp.jobPositionId = j.id where jp.active = :isActive")
+    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace,jp.jobDescription,jp.minSalary,jp.maxSalary) from JobPosting as jp where jp.active = :isActive")
     List<JobPostingForListDto> getByActive(@Param("isActive") boolean isActive);
 
-    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,e.companyName,j.name,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace) from JobPosting as jp join Employer as e on e.id = jp.employerId join JobPosition as j on jp.jobPositionId = j.id where jp.active = :isActive order by jp.releaseDate")
+    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace,jp.jobDescription,jp.minSalary,jp.maxSalary) from JobPosting as jp where jp.active = :isActive order by jp.releaseDate")
     List<JobPostingForListDto> getByActiveSortedByReleaseDate(@Param("isActive") boolean isActive);
 
-    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,e.companyName,j.name,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace) from JobPosting as jp join Employer as e on e.id = jp.employerId join JobPosition as j on jp.jobPositionId = j.id where jp.active = :isActive and e.id = :employerId")
+    @Query("select new com.davutbudak.hrms.entities.dtos.JobPostingForListDto(jp.id,jp.numberOfOpenPositions,jp.releaseDate,jp.deadline,jp.workTime,jp.workPlace,jp.jobDescription,jp.minSalary,jp.maxSalary) from JobPosting as jp join Employer as e on e.id = jp.employerId where jp.active = :isActive and e.id = :employerId")
     List<JobPostingForListDto> getByActiveAndEmployer(@Param("isActive") boolean isActive, @Param("employerId") int employerId);
 
     @Query("select e from Employer as e join JobPosting as jp on e.id = jp.employerId where jp.id = :jobPostingId")

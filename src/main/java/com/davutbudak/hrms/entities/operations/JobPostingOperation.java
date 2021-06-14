@@ -17,31 +17,31 @@ public class JobPostingOperation {
         JobPostingOperation.jobPostingDao = jobPostingDao;
     }
 
-    private static Employer getEmployer(int jobPostingId) {
+    public static Employer getEmployer(int jobPostingId) {
         return jobPostingDao.getEmployer(jobPostingId);
     }
 
-    private static JobPosition getJobPosition(int jobPostingId) {
+    public static JobPosition getJobPosition(int jobPostingId) {
         return jobPostingDao.getJobPosition(jobPostingId);
     }
 
-    private static City getCity(int jobPostingId) {
+    public static City getCity(int jobPostingId) {
         return jobPostingDao.getCity(jobPostingId);
     }
 
-    private static void addEmployer(int jobPostingId, int employerId) {
+    public static void addEmployer(int jobPostingId, int employerId) {
         JobPosting jobPosting = jobPostingDao.getById(jobPostingId);
         jobPosting.setEmployerId(employerId);
         jobPostingDao.save(jobPosting);
     }
 
-    private static void addJobPosition(int jobPostingId, int jobPositionId) {
+    public static void addJobPosition(int jobPostingId, int jobPositionId) {
         JobPosting jobPosting = jobPostingDao.getById(jobPostingId);
         jobPosting.setJobPositionId(jobPositionId);
         jobPostingDao.save(jobPosting);
     }
 
-    private static void addCity(int jobPostingId, int cityId) {
+    public static void addCity(int jobPostingId, int cityId) {
         JobPosting jobPosting = jobPostingDao.getById(jobPostingId);
         jobPosting.setCityId(cityId);
         jobPostingDao.save(jobPosting);

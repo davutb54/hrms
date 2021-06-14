@@ -1,5 +1,8 @@
 package com.davutbudak.hrms.entities.concretes;
 
+import com.davutbudak.hrms.entities.enums.WorkPlace;
+import com.davutbudak.hrms.entities.enums.WorkTime;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -39,12 +42,22 @@ public class JobPosting {
     @Column(name = "max_salary")
     private int maxSalary;
 
+    @Column(name = "work_time")
+    @Enumerated(EnumType.STRING)
+    private WorkTime workTime;
+
+    @Column(name = "work_place")
+    @Enumerated(EnumType.STRING)
+    private WorkPlace workPlace;
+
     @Column(name = "number_of_open_positions")
     private int numberOfOpenPositions;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Column(name = "release_date")
     private LocalDate releaseDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     @Column(name = "deadline")
     private LocalDate deadline;
 
